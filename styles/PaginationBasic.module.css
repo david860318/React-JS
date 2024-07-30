@@ -1,0 +1,31 @@
+.pagination {
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .pageItem {
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f5f5f7;
+  }
+  
+  .pageItem.active {
+    background-color: #0070f3;
+    color: white;
+  }
+  
+  .pageItem.disabled {
+    color: #999;
+    cursor: not-allowed;
+  }
+  
+  .pageItem:disabled {
+    pointer-events: none;
+  }
+  

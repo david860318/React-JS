@@ -1,0 +1,22 @@
+.on {
+  /* 利用css變數來套用元件中，由style屬性帶入顏色屬性變數值 */
+  /* color: gold; */
+  color: var(--fill-color);
+}
+
+.off {
+  /* 利用css變數來套用元件中，由style屬性帶入顏色屬性變數值 */
+  /* color: gray; */
+  color: var(--empty-color);
+}
+
+.goodStyle{
+  color:red;
+}
+
+.starBtn{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
