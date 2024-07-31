@@ -5,10 +5,17 @@ import Tickets from '@/components/test/tickets';
 // import Pages from '@/components/test/pages';
 
 export default function Test() {
+
+const foo = ()=>{
+  if(true){
+    console.log(123);
+  }
+}
+
   return (
     <>
-      <Tickets />
-      {/* <Pages /> */}
+      <br></br>
+      <img src="" alt="" />
     </>
   );
 }

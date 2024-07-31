@@ -1,13 +1,10 @@
 // 導入時就自動轉為JS資料格式
 import products from '@/data/Product.json';
 
-// 導入css module定義的樣式檔案(.moudle.css)，導入後styles會是一個物件值
-import styles from '@/styles/product-table.module.css';
-
 export default function ProductTable() {
   return (
     <>
-      <table className={styles['my-table']}>
+      <table>
         <thead>
           <tr>
             <th>ID</th>
@@ -32,6 +29,37 @@ export default function ProductTable() {
           })}
         </tbody>
       </table>
+      <style jsx>
+        {`
+          table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+
+          td,
+          th {
+            border: 1px solid #ddd;
+            padding: 8px;
+          }
+
+          tr:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+
+          tr:hover {
+            background-color: #ddd;
+          }
+
+          th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04aa6d;
+            color: white;
+          }
+        `}
+      </style>
     </>
   );
 }
