@@ -54,7 +54,7 @@
   position: relative;
 }
 
-.tdStyle:not(:last-child):after{
+.tdStyle:not(:last-child):after {
   content: '';
   position: absolute;
   left: 26px; /* 調整左邊距 */
@@ -107,7 +107,7 @@
   justify-content: center;
 }
 
-.checkBg{
+.checkBg {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -157,7 +157,6 @@
   height: 48px;
   display: flex;
   justify-content: right;
-  
 }
 
 .closeButton {
@@ -196,7 +195,7 @@
   font-size: 14px;
 }
 
-.formInput:focus{
+.formInput:focus {
   border: none;
   outline: none;
 }
@@ -228,7 +227,7 @@
   }
 }
 
-.formGroupExplain{
+.formGroupExplain {
   width: 100%;
   /* min-height: 230px; */
   display: flex;
@@ -236,7 +235,7 @@
   align-items: center;
 }
 
-.formQusExplain{
+.formQusExplain {
   width: 528px;
   max-width: 98%;
   /* min-height: 230px; */
@@ -246,14 +245,14 @@
   align-items: top;
   font-size: 14px;
   border-bottom: 1px solid #8f8e93;
-  & label{
+  & label {
     width: 66px;
     white-space: nowrap;
     color: #413c1c;
   }
 }
 
-.formInputExplain{
+.formInputExplain {
   flex: 1;
   min-height: 150px;
   border: none;
@@ -262,27 +261,27 @@
   font-size: 14px;
 }
 
-.formInputExplain:focus{
+.formInputExplain:focus {
   border: none;
   outline: none;
 }
 
-.optionTextDefault{
+.optionTextDefault {
   color: #8f8e93 !important;
 }
 
 .formInput:invalid {
-  color: #8f8e93 !important; 
+  color: #8f8e93 !important;
 }
 
-.submitGroup{
+.submitGroup {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.submitDiv{
+.submitDiv {
   width: 528px;
   max-width: 98%;
   display: flex;
@@ -298,7 +297,6 @@
   padding: 10px 20px;
   border-radius: 12px;
   cursor: pointer;
-
 }
 
 /* .submitButton:hover {
