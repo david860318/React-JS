@@ -1,15 +1,27 @@
 import { React, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import styles from '@/styles/tickets.module.css';
+
+// icons
 import { IoEyeOutline } from 'react-icons/io5';
 import { MdOutlinePostAdd } from 'react-icons/md';
-import AddModel from './add-modal';
-import styles from '@/styles/tickets.module.css';
+import { MdOutlineFactCheck } from 'react-icons/md';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 export default function Tickets() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5; // 你可以根据实际情况动态计算总页数
+  const totalPages = 5;
 
-  const [modalVisible, setModalVisible] = useState(false);
+  // 彈出視窗
+  const [showModal, setShowModal] = useState(false);
+  const [showNestedModal, setShowNestedModal] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // 處理表單提交
+    console.log('表單已提交');
+    setShowModal(false); // 提交後關閉彈出視窗
+  };
 
   const handlePageClick = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -17,23 +29,29 @@ export default function Tickets() {
     }
   };
 
-  const handleOpenModal = () => setModalVisible(true);
-  const handleCloseModal = () => setModalVisible(false);
+  const handleNestedModalClick = () => {
+    setShowNestedModal(true);
+  };
+
+  const handleNestedModalClose = () => {
+    setShowNestedModal(false);
+  };
+
   return (
     <>
       <div className={styles.containerStyle}>
         <div className={styles.titleStyle}>
-          <h1>客服單列表</h1>
-          <a
+          客服單列表
+          <button
             href="#"
             className={styles.addTicket}
             onClick={(e) => {
               e.preventDefault();
-              handleOpenModal();
+              setShowModal(true);
             }}
           >
             <MdOutlinePostAdd className={styles.addTicketIcon} />
-          </a>
+          </button>
         </div>
 
         <div>
@@ -55,39 +73,45 @@ export default function Tickets() {
                   <td>00001</td>
                   <td>AA000123</td>
                   <td>營地相關</td>
-                  <td>環境髒亂...</td>
+                  <td className={styles.CsDescription}>環境髒亂...</td>
                   <td>2024/07/09</td>
-                  <td>待回覆</td>
+                  <td className={styles.CsState}>
+                    <div className={styles.CsState1}>待回覆</div>
+                  </td>
                   <td>
-                    <a href="" className={styles.iconLink}>
-                      <IoEyeOutline className={styles.icon} />
-                    </a>
+                    <button href="" className={styles.checkBg}>
+                      <IoEyeOutline className={styles.checkIcon} />
+                    </button>
                   </td>
                 </tr>
                 <tr className={styles.tdStyle}>
                   <td>00001</td>
                   <td>AA000123</td>
                   <td>營地相關</td>
-                  <td>環境髒亂...</td>
+                  <td className={styles.CsDescription}>環境髒亂...</td>
                   <td>2024/07/09</td>
-                  <td>待回覆</td>
+                  <td className={styles.CsState}>
+                    <div className={styles.CsState2}>處理中</div>
+                  </td>
                   <td>
-                    <a href="" className={styles.iconLink}>
-                      <IoEyeOutline className={styles.icon} />
-                    </a>
+                    <button href="" className={styles.checkBg}>
+                      <IoEyeOutline className={styles.checkIcon} />
+                    </button>
                   </td>
                 </tr>
                 <tr className={styles.tdStyle}>
                   <td>00001</td>
                   <td>AA000123</td>
                   <td>營地相關</td>
-                  <td>環境髒亂...</td>
+                  <td className={styles.CsDescription}>環境髒亂...</td>
                   <td>2024/07/09</td>
-                  <td>待回覆</td>
+                  <td className={styles.CsState}>
+                    <div className={styles.CsState3}>已處理</div>
+                  </td>
                   <td>
-                    <a href="" className={styles.iconLink}>
-                      <IoEyeOutline className={styles.icon} />
-                    </a>
+                    <button href="" className={styles.checkBg}>
+                      <IoEyeOutline className={styles.checkIcon} />
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -126,7 +150,132 @@ export default function Tickets() {
           </button>
         </div>
       </div>
-      <AddModel show={modalVisible} handleClose={handleCloseModal} />
+
+      {/* 彈出視窗 */}
+      {showModal && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalClose}>
+              <button
+                className={styles.closeButton}
+                onClick={() => setShowModal(false)}
+              >
+                <IoIosCloseCircleOutline />
+              </button>
+            </div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.formTitle}>聯絡我們</div>
+              <div className={styles.formGroup}>
+                <div className={styles.formQus}>
+                  <label htmlFor="ticketEmail">電子郵件*</label>
+                  <input
+                    className={styles.formInput}
+                    type="email"
+                    placeholder="請輸入您的Email"
+                    required
+                  />
+                </div>
+              </div>
+              <div className={styles.formGroup}>
+                <div className={styles.formQus}>
+                  <label htmlFor="ticketPhone">連絡電話*</label>
+                  <input
+                    className={styles.formInput}
+                    type="text"
+                    maxLength="11"
+                    pattern="09\d{8}"
+                    placeholder="請輸入您的電話"
+                    required
+                  />
+                </div>
+              </div>
+              <div className={styles.formGroup}>
+                <div className={styles.formQus}>
+                  <label htmlFor="ticketOrderNum">訂單編號</label>
+                  <input
+                    className={styles.formInput}
+                    type="text"
+                    placeholder="請輸入或選擇您的訂單編號"
+                  />
+                  <div
+                    className={styles.checkBg}
+                    onClick={handleNestedModalClick}
+                    role="button"
+                    tabIndex={0} // 使 div 成為可聚焦的元素
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleNestedModalClick();
+                      }
+                    }}
+                  >
+                    <MdOutlineFactCheck className={styles.checkIcon} />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.formGroup}>
+                <div className={styles.formQus}>
+                  <label htmlFor="ticketCategory">問題分類*</label>
+                  <select className={styles.formInput} required>
+                    <option className={styles.optionTextDefault} value="">
+                      請輸入或選擇您的訂單編號
+                    </option>
+                    <option value="option1">營地相關</option>
+                    <option value="option2">用品租借相關</option>
+                    <option value="option3">費用相關</option>
+                    <option value="option4">網站操作相關</option>
+                    <option value="option5">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div className={styles.formGroupExplain}>
+                <div className={styles.formQusExplain}>
+                  <label htmlFor="ticketOrderNum">問題說明*</label>
+                  <textarea
+                    className={styles.formInputExplain}
+                    id="description"
+                    name="description"
+                    placeholder="請詳細敘述問題"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div className={styles.submitGroup}>
+                <div className={styles.submitDiv}>
+                  <button type="submit" className={styles.submitButton}>
+                    提交
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* 嵌套彈出視窗 */}
+      {showNestedModal && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalClose}>
+              <button
+                className={styles.closeButton}
+                onClick={handleNestedModalClose}
+              >
+                <IoIosCloseCircleOutline />
+              </button>
+            </div>
+            <div className={styles.nestedModalContent}>
+              <h2>嵌套視窗標題</h2>
+              <p>這是嵌套彈出視窗的內容。</p>
+              <button
+                className={styles.submitButton}
+                onClick={handleNestedModalClose}
+              >
+                關閉
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

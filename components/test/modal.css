@@ -1,28 +1,41 @@
+/* 彈出視窗遮罩 */
 .modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* 确保模态窗口在顶部 */
+  z-index: 1000;
 }
 
+/* 彈出視窗內容 */
 .modalContent {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 400px;
-  text-align: center;
+  width: 500px;
+  max-width: 90%;
+  position: relative;
 }
 
+/* 關閉按鈕 */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 表單樣式 */
 .formGroup {
   margin-bottom: 15px;
-  text-align: left;
 }
 
 .formGroup label {
@@ -31,28 +44,22 @@
 }
 
 .formGroup input,
-.formGroup select,
 .formGroup textarea {
   width: 100%;
   padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  border: 1px solid #ddd;
 }
 
-.formGroup textarea {
-  resize: vertical;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+.submitButton {
   background-color: #007bff;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-button[type='button'] {
-  background-color: #6c757d;
+.submitButton:hover {
+  background-color: #0056b3;
 }
