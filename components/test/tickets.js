@@ -7,6 +7,8 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { MdOutlinePostAdd } from 'react-icons/md';
 import { MdOutlineFactCheck } from 'react-icons/md';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { FaCalendarCheck } from 'react-icons/fa';
+import { MdOutlineLowPriority } from 'react-icons/md';
 
 export default function Tickets() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,6 +17,7 @@ export default function Tickets() {
   // 彈出視窗
   const [showModal, setShowModal] = useState(false);
   const [showNestedModal, setShowNestedModal] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -79,7 +82,11 @@ export default function Tickets() {
                     <div className={styles.CsState1}>待回覆</div>
                   </td>
                   <td>
-                    <button href="" className={styles.checkBg}>
+                    <button
+                      href=""
+                      className={styles.checkBg}
+                      onClick={() => setShowDetailModal(true)}
+                    >
                       <IoEyeOutline className={styles.checkIcon} />
                     </button>
                   </td>
@@ -151,7 +158,7 @@ export default function Tickets() {
         </div>
       </div>
 
-      {/* 彈出視窗 */}
+      {/* 新增客服單 */}
       {showModal && (
         <div className={styles.modalBackdrop}>
           <div className={styles.modalContent}>
@@ -217,7 +224,7 @@ export default function Tickets() {
                   <label htmlFor="ticketCategory">問題分類*</label>
                   <select className={styles.formInput} required>
                     <option className={styles.optionTextDefault} value="">
-                      請輸入或選擇您的訂單編號
+                      請選擇問題分類
                     </option>
                     <option value="option1">營地相關</option>
                     <option value="option2">用品租借相關</option>
@@ -251,7 +258,7 @@ export default function Tickets() {
         </div>
       )}
 
-      {/* 嵌套彈出視窗 */}
+      {/* 選擇訂單編號 */}
       {showNestedModal && (
         <div className={styles.modalBackdrop}>
           <div className={styles.modalContent}>
@@ -263,16 +270,134 @@ export default function Tickets() {
                 <IoIosCloseCircleOutline />
               </button>
             </div>
-            <div className={styles.nestedModalContent}>
-              <h2>嵌套視窗標題</h2>
-              <p>這是嵌套彈出視窗的內容。</p>
+            <div className={styles.ticketOrderNum}>
+              <div className={styles.formTitle}>選擇訂單</div>
+              <Table striped bordered hover className={styles.orderNumTable}>
+                <thead className={styles.orderThead}>
+                  <tr>
+                    <th>訂單編號</th>
+                    <th>訂單成立時間</th>
+                    <th>交易金額</th>
+                    <th>選擇訂單</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className={styles.orderTr}>
+                    <td>AA000123</td>
+                    <td>2024/07/09</td>
+                    <td>$ 5,000</td>
+                    <td>
+                      <button href="" className={styles.checkBg}>
+                        <FaCalendarCheck className={styles.checkOrder} />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr className={styles.orderTr}>
+                    <td>AA000123</td>
+                    <td>2024/07/09</td>
+                    <td>$ 5,000</td>
+                    <td>
+                      <button href="" className={styles.checkBg}>
+                        <FaCalendarCheck className={styles.checkOrder} />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr className={styles.orderTr}>
+                    <td>AA000123</td>
+                    <td>2024/07/09</td>
+                    <td>$ 5,000</td>
+                    <td>
+                      <button href="" className={styles.checkBg}>
+                        <FaCalendarCheck className={styles.checkOrder} />
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+              <div className={styles.submitGroup}>
+                <div className={styles.submitDiv}>
+                  <button
+                    className={styles.backButton}
+                    onClick={handleNestedModalClose}
+                  >
+                    <MdOutlineLowPriority className={styles.backIcon} />
+                    返回
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 查看詳細頁 */}
+      {showDetailModal && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalClose}>
               <button
-                className={styles.submitButton}
-                onClick={handleNestedModalClose}
+                className={styles.closeButton}
+                onClick={() => setShowDetailModal(false)}
               >
-                關閉
+                <IoIosCloseCircleOutline />
               </button>
             </div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.formTitle}>客服單詳細資料</div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketEmail">客服單編號</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketPhone">訂單編號</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketOrderNum">問題分類</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketCategory">建立時間</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketOrderNum">客服單狀態</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketOrderNum">客服回覆</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.formDetail}>
+                <div className={styles.formDetailContent}>
+                  <label htmlFor="ticketOrderNum">回覆時間</label>
+                  <div className={styles.DetailContent}>00001</div>
+                </div>
+              </div>
+              <div className={styles.submitGroup}>
+                <div className={styles.submitDiv}>
+                  <button
+                    className={styles.backButton}
+                    onClick={() => setShowDetailModal(false)}
+                  >
+                    <MdOutlineLowPriority className={styles.backIcon} />
+                    返回客服單列表
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       )}

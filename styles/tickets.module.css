@@ -147,7 +147,7 @@
 
 /* 彈出視窗內容 */
 .modalContent {
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 8px;
   width: 672px;
   max-width: 90%;
@@ -169,7 +169,7 @@
 
 .form {
   width: 624px;
-  max-width: 90%;
+  /* max-width: 90%; */
   background-color: #f5f5f7;
   border-radius: 35px;
   overflow: hidden;
@@ -279,6 +279,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 16px;
 }
 
 .submitDiv {
@@ -299,6 +300,120 @@
   cursor: pointer;
 }
 
-/* .submitButton:hover {
-  background-color: #0056b3;
-} */
+.ticketOrderNum {
+  width: 624px;
+  background-color: #f5f5f7;
+  border-radius: 35px;
+  overflow: hidden;
+}
+
+.checkOrder {
+  width: 24px;
+  height: 24px;
+  color: #413c1c;
+}
+
+.orderNumTable {
+  width: 100%;
+  /* outline: 1px solid #413c1c; */
+  overflow: hidden;
+  border-collapse: collapse;
+  margin-top: 24px;
+}
+
+.orderThead {
+  height: 80px;
+  text-align: center;
+  position: relative;
+}
+
+.orderThead::after {
+  content: '';
+  position: absolute;
+  left: 26px; /* 調整左邊距 */
+  right: 26px; /* 調整右邊距 */
+  bottom: 0; /* 調整底部位置 */
+  height: 0.5px; /* 控制底線的粗細 */
+  background-color: #8f8e93; /* 控制底線的顏色 */
+}
+
+.orderTr {
+  height: 60px;
+  text-align: center;
+  position: relative;
+}
+
+.orderTr::after {
+  content: '';
+  position: absolute;
+  left: 26px; /* 調整左邊距 */
+  right: 26px; /* 調整右邊距 */
+  bottom: 0; /* 調整底部位置 */
+  height: 0.5px; /* 控制底線的粗細 */
+  background-color: #8f8e93; /* 控制底線的顏色 */
+}
+
+.backIcon {
+  width: 24px;
+  height: 24px;
+  color: #f5f5f7;
+}
+
+.backButton {
+  background-color: #413c1c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 客服單詳細資料 */
+.formDetail {
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formDetailContent {
+  width: 528px;
+  max-width: 98%;
+  min-height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #8f8e93;
+  & label {
+    width: 100px;
+    height: 100%;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #413c1c;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.DetailContent {
+  width: 428px;
+  text-align: end;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: right;
+}
+
+/* 
+<div className={styles.formTitle}>客服單詳細資料</div>
+  <div className={styles.formDetai}>
+    <div className={styles.formQus}>
+      <label htmlFor="ticketEmail">客服單編號</label>
+      <div>00001</div>
+  </div>
+</div> 
+*/
