@@ -1,0 +1,134 @@
+.tabsStyle {
+  width: 255px;
+  margin-bottom: 32px !important;
+}
+
+.tabStyle {
+  width: 952px;
+  color: #413c1c !important;
+}
+
+.customTab {
+  height: 32px;
+  color: #413c1c; /* 默認顏色 */
+  padding: 0 20px;
+}
+
+.campContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.CardStyle {
+  width: 296px;
+  box-sizing: border-box;
+  border: none !important;
+  border-radius: 18px !important;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.CardImg {
+  height: 248px;
+}
+
+.CardBodyStyle {
+  height: 68px;
+  background-color: #413c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 18px;
+  margin-top: -20px;
+}
+
+.CardHStyle {
+  color: #f5f5f7;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.CardTitleStyle {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.CardTitle1Style {
+  min-width: 47px;
+  height: 19px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #e49366;
+  color: #f5f5f7;
+  font-size: 12px;
+  margin-right: 6px;
+  padding: 0px 5px;
+}
+
+.CardTitle2Style {
+  min-width: 35px;
+  height: 19px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #e5e4cf;
+  color: #413c1c;
+  font-size: 12px;
+  padding: 0px 5px;
+}
+
+.CardBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.CardIcon {
+  color: #f5f5f7;
+  width: 40px;
+  height: 40px;
+}
+
+/* 露營用具card */
+.CardBody2Style {
+  height: 68px;
+  background-color: #e5e4cf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 18px;
+  margin-top: -20px;
+}
+
+.CardH2Style {
+  color: #413c1c;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.CardTitle3Style {
+  min-width: 35px;
+  height: 19px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #413c1c;
+  color: #f5f5f7;
+  font-size: 12px;
+  padding: 0px 5px;
+}
+
+.CardIcon2 {
+  color: #413c1c;
+  width: 40px;
+  height: 40px;
+}

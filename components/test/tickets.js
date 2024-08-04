@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import styles from '@/styles/tickets.module.css';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 // icons
 import { IoEyeOutline } from 'react-icons/io5';
@@ -43,6 +44,16 @@ export default function Tickets() {
   return (
     <>
       <div className={styles.containerStyle}>
+        <div>
+          <Breadcrumb>
+            <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+            <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+              Library
+            </Breadcrumb.Item>
+            <Breadcrumb.Item active>Data</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+
         <div className={styles.titleStyle}>
           客服單列表
           <button
